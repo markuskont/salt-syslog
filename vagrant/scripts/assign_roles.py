@@ -16,7 +16,8 @@ if 'logserver' in hostname:
         grains['roles'].append('rsyslog-server')
     elif 'syslog-ng' in hostname:
         grains['roles'].append('syslog-ng-server')
-        grains['roles'].append('syslog-ca')
+elif 'pki' in hostname:
+    grains['roles'].append('syslog-ca')
 elif 'shipper' in hostname:
     grains['roles'].append('logs')
 

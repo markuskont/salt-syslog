@@ -27,19 +27,28 @@ boxes = [
     :saltenv    => 'DEVEL'
   },
   {
-    :name       => "shipper-xenial",
-    :mem        => "1024",
-    :cpu        => "2",
+    :name       => "pki-ca",
+    :mem        => "512",
+    :cpu        => "1",
     :ip         => "192.168.56.143",
+    :image      => 'debian/jessie64',
+    :saltmaster => false,
+    :saltenv    => 'DEVEL'
+  },
+  {
+    :name       => "shipper-xenial",
+    :mem        => "512",
+    :cpu        => "1",
+    :ip         => "192.168.56.144",
     :image      => 'ubuntu/xenial64',
     :saltmaster => false,
     :saltenv    => 'DEVEL'
   },
   {
     :name       => "shipper-jessie",
-    :mem        => "1024",
-    :cpu        => "2",
-    :ip         => "192.168.56.144",
+    :mem        => "512",
+    :cpu        => "1",
+    :ip         => "192.168.56.145",
     :image      => 'debian/jessie64',
     :saltmaster => false,
     :saltenv    => 'DEVEL'
