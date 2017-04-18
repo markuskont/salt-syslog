@@ -13,7 +13,7 @@ boxes = [
     :mem        => "1024",
     :cpu        => "2",
     :ip         => "192.168.56.141",
-    :image      => 'debian/jessie64',
+    :image      => 'ubuntu/trusty64',
     :saltmaster => false,
     :saltenv    => 'DEVEL'
   },
