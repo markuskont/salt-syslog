@@ -1,0 +1,24 @@
+{% set map = salt['grains.filter_by']({
+  'Linux': {
+    'conf_dir': '/etc/ssl',
+    'user': 'syslog',
+    'group': 'syslog',
+    'home': '/home/syslog',
+    'mode': {
+      'dir': '0750',
+      'key': '0640',
+      'cert': '0644'
+    }
+  },
+  'Windows': {
+    'conf_dir': 'C:/ProgramData/ssl',
+    'user': none,
+    'group': none,
+    'home': none,
+    'mode': {
+      'dir': none,
+      'key': none,
+      'cert': none
+    }
+  }
+}, grain='kernel', merge=salt['pillar.get']('syslog_pki_env:lookup')) %}
