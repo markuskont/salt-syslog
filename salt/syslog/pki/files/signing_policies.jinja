@@ -1,0 +1,15 @@
+x509_signing_policies:
+  syslog:
+    - minions: '*'
+    - signing_private_key: {{ pillar.syslog.pki.dir }}/ca.key
+    - signing_cert: {{ pillar.syslog.pki.dir }}/ca.crt
+    - C: {{ pillar.syslog.pki.country }}
+    - ST: {{ pillar.syslog.pki.state }}
+    - L: {{ pillar.syslog.pki.location }}
+    - O: {{ pillar.syslog.pki.org }}
+    - basicConstraints: "critical CA:false"
+    - keyUsage: "critical keyEncipherment"
+    - subjectKeyIdentifier: hash
+    - authorityKeyIdentifier: keyid,issuer:always
+    - days_valid: 365
+    - copypath: {{ pillar.syslog.pki.dir }}/issued_certs/
