@@ -54,6 +54,15 @@ boxes = [
     :saltenv    => 'DEVEL'
   },
   {
+    :name       => "shipper-precise",
+    :mem        => "512",
+    :cpu        => "1",
+    :ip         => "192.168.56.146",
+    :image      => 'ubuntu/precise64',
+    :saltmaster => false,
+    :saltenv    => 'DEVEL'
+  },
+  {
     :name       => "saltmaster",
     :mem        => "512",
     :cpu        => "2",
