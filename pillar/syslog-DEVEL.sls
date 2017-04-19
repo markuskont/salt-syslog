@@ -17,7 +17,7 @@ syslog_ng:
       use_fqdn: 'no'
       owner: 'syslog'
       group: 'syslog'
-      perm: 0640
+      perm: 640
       stats_freq: 0
       bad_hostname: '^gconfd$'
       create_dirs: 'yes'
@@ -41,3 +41,15 @@ syslog_ng:
       d_local_ovpn: '/var/log/openvpn/$HOST-$PROGRAM.log'
       d_local_criticality: '/var/log/criticality/$LEVEL.log'
       d_local_mail: '/var/log/mail/$HOST.log'
+
+rsyslog:
+  global:
+    FileOwner: 'syslog'
+    FileGroup: 'syslog'
+    FileCreateMode: '0640'
+    DirOwner: 'syslog'
+    DirGroup: 'syslog'
+    DirCreateMode: '0755'
+    PrivDropToUser: 'root'
+    PrivDropToGroup: 'root'
+    WorkDirectory: '/var/spool/rsyslog'

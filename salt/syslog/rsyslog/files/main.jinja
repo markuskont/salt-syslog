@@ -1,0 +1,30 @@
+# MANAGED BY SALT
+#################
+#### MODULES ####
+#################
+
+$ModLoad imuxsock # provides support for local system logging
+$ModLoad imklog   # provides kernel logging support (previously done by rklogd)
+#$ModLoad immark  # provides --MARK-- message capability
+
+###########################
+#### GLOBAL DIRECTIVES ####
+###########################
+#
+# Static config
+#
+$MaxMessageSize 32k
+
+#
+# Generated config
+#
+
+{% for name, param in pillar.rsyslog.global.items() %}
+${{ name }} {{ param }}
+{% endfor %}
+
+
+#
+# Include all config files in /etc/rsyslog.d/
+#
+$IncludeConfig /etc/rsyslog.d/*.conf
