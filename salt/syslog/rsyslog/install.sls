@@ -1,18 +1,3 @@
-{% if grains.oscodename == 'jessie' %}
-  {% set repo = 'Debian_8.0' %}
-{% elif grains.oscodename == 'wheezy' %}
-  {% set repo = 'Debian_7.0' %}
-{% elif grains.oscodename == 'Precise' %}
-  {% set repo = 'xUbuntu_12.04' %}
-{% elif grains.oscodename == 'trusty' %}
-  {% set repo = 'xUbuntu_14.04' %}
-{% elif grains.oscodename == 'xenial' %}
-  {% set repo = 'xUbuntu_16.04' %}
-{% else %}
-Fail - state does not support syslog-ng server on {{ grains.oscodename }}
-  test.fail_without_changes
-{% endif %}
-
 syslog.rsyslog.install:
   {% if grains.oscodename == 'trusty' or grains.oscodename == 'precise'  %}
   pkgrepo.managed:

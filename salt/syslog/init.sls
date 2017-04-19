@@ -14,6 +14,13 @@ syslog.logserver.setup:
     - require:
       - salt: syslog.ca.setup
 
+#syslog.ensure-up-to-date-jinja2:
+#  salt.state:
+#    - tgt: 'G@roles:logs and G@oscodename:precise and G@env:{{ saltenv }}'
+#    - tgt_type: compound
+#    - sls: syslog.common.jinja2
+#    - saltenv: {{ saltenv }}
+
 syslog.client.setup:
   salt.state:
     - tgt: 'G@roles:logs and G@env:{{ saltenv }}'

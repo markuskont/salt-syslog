@@ -6,7 +6,7 @@ syslog.syslog-ng.rsyslog:
   {% set repo = 'Debian_8.0' %}
 {% elif grains.oscodename == 'wheezy' %}
   {% set repo = 'Debian_7.0' %}
-{% elif grains.oscodename == 'Precise' %}
+{% elif grains.oscodename == 'precise' %}
   {% set repo = 'xUbuntu_12.04' %}
 {% elif grains.oscodename == 'trusty' %}
   {% set repo = 'xUbuntu_14.04' %}

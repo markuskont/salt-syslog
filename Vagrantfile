@@ -106,9 +106,9 @@ Vagrant.configure(2) do |config|
       config.vm.provision "shell",
         inline: "grep salt /etc/hosts || sudo echo \"#{MASTER_IP}\"  salt >> /etc/hosts"
       config.vm.provision "shell",
-        inline: "grep syslog-ng /etc/hosts || sudo echo \"#{SYSLOGNG_IP}\"  salt >> /etc/hosts"
+        inline: "grep syslog-ng /etc/hosts || sudo echo \"#{SYSLOGNG_IP}\"  logserver-syslog-ng >> /etc/hosts"
       config.vm.provision "shell",
-        inline: "grep rsyslog /etc/hosts || sudo echo \"#{RSYSLOG_IP}\"  salt >> /etc/hosts"
+        inline: "grep rsyslog /etc/hosts || sudo echo \"#{RSYSLOG_IP}\"  logserver-rsyslog >> /etc/hosts"
       config.vm.provision :salt do |salt|
         salt.minion_config = "vagrant/config/minion"
         salt.masterless = false

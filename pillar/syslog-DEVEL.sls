@@ -10,10 +10,10 @@ syslog:
   params:
     PermPeer: '*'
   servers:
-    - server: 192.168.56.141
+    - server: logserver-syslog-ng
       port: 6514
       rsyslog_format: 'RSYSLOG_ForwardFormat'
-    - server: 192.168.56.142
+    - server: logserver-rsyslog
       port: 6514
       rsyslog_format: 'RSYSLOG_ForwardFormat'
 
