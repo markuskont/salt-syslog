@@ -1,0 +1,13 @@
+source s_src {
+  system();
+  internal();
+};
+
+destination d_local_self {
+  file("/var/log/{{ grains.fqdn }}.log");
+};
+
+log {
+        source(s_src);
+        destination(d_local_self);
+};

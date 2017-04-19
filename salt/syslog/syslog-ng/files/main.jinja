@@ -1,0 +1,22 @@
+@version: {{ major }}.{{ minor }}
+@include "scl.conf"
+
+options {
+        chain_hostnames({{ pillar.syslog_ng.server.global.chain_hostnames }});
+        use_dns({{ pillar.syslog_ng.server.global.use_dns }});
+        use_fqdn({{ pillar.syslog_ng.server.global.use_fqdn }});
+        owner("{{ pillar.syslog_ng.server.global.owner }}");
+        group("{{ pillar.syslog_ng.server.global.group }}");
+        perm({{ pillar.syslog_ng.server.global.perm }});
+        stats_freq({{ pillar.syslog_ng.server.global.stats_freq }});
+        bad_hostname("{{ pillar.syslog_ng.server.global.bad_hostname }}");
+        create_dirs({{ pillar.syslog_ng.server.global.create_dirs }});
+        threaded({{ pillar.syslog_ng.server.global.threaded }});
+        flush_lines({{ pillar.syslog_ng.server.global.flush_lines }});
+        log_fifo_size({{ pillar.syslog_ng.server.global.log_fifo_size }});
+        keep_timestamp({{ pillar.syslog_ng.server.global.keep_timestamp }});
+        ts-format({{ pillar.syslog_ng.server.global.ts_format }});
+        time_reopen({{ pillar.syslog_ng.server.global.time_reopen }});
+};
+
+@include "/etc/syslog-ng/conf.d/*.conf"

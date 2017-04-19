@@ -1,6 +1,7 @@
 {% set map = salt['grains.filter_by']({
   'Linux': {
-    'conf_dir': '/etc/ssl',
+    'conf_dir': '/etc/ssl/syslog',
+    'ca_dir': '/etc/ssl/syslog/ca',
     'user': 'syslog',
     'group': 'syslog',
     'home': '/home/syslog',
@@ -11,7 +12,8 @@
     }
   },
   'Windows': {
-    'conf_dir': 'C:/ProgramData/ssl',
+    'conf_dir': 'C:/ProgramData/ssl_syslog',
+    'ca_dir': 'C:/ProgramData/ssl_syslog/ca',
     'user': none,
     'group': none,
     'home': none,
