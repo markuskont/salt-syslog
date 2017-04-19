@@ -6,13 +6,15 @@ SALT = 'stable' # stable|git|daily|testing
 SALT_VERSION = "v2016.11.2"
 
 INFLUX_IP = '192.168.56.140'
+SYSLOGNG_IP = '192.168.56.141'
+RSYSLOG_IP = '192.168.56.142'
 
 boxes = [
   {
     :name       => "logserver-rsyslog",
     :mem        => "1024",
     :cpu        => "2",
-    :ip         => "192.168.56.141",
+    :ip         => RSYSLOG_IP,
     :image      => 'ubuntu/trusty64',
     :saltmaster => false,
     :saltenv    => 'DEVEL'
@@ -21,7 +23,7 @@ boxes = [
     :name       => "logserver-syslog-ng",
     :mem        => "1024",
     :cpu        => "2",
-    :ip         => "192.168.56.142",
+    :ip         => SYSLOGNG_IP,
     :image      => 'debian/jessie64',
     :saltmaster => false,
     :saltenv    => 'DEVEL'
@@ -45,11 +47,11 @@ boxes = [
     :saltenv    => 'DEVEL'
   },
   {
-    :name       => "shipper-jessie",
+    :name       => "shipper-trusty",
     :mem        => "512",
     :cpu        => "1",
     :ip         => "192.168.56.145",
-    :image      => 'debian/jessie64',
+    :image      => 'ubuntu/trusty64',
     :saltmaster => false,
     :saltenv    => 'DEVEL'
   },
@@ -59,6 +61,24 @@ boxes = [
     :cpu        => "1",
     :ip         => "192.168.56.146",
     :image      => 'ubuntu/precise64',
+    :saltmaster => false,
+    :saltenv    => 'DEVEL'
+  },
+  {
+    :name       => "shipper-wheezy",
+    :mem        => "512",
+    :cpu        => "1",
+    :ip         => "192.168.56.147",
+    :image      => 'debian/wheezy64',
+    :saltmaster => false,
+    :saltenv    => 'DEVEL'
+  },
+  {
+    :name       => "shipper-jessie",
+    :mem        => "512",
+    :cpu        => "1",
+    :ip         => "192.168.56.148",
+    :image      => 'debian/wheezy64',
     :saltmaster => false,
     :saltenv    => 'DEVEL'
   },
@@ -85,6 +105,10 @@ Vagrant.configure(2) do |config|
       end
       config.vm.provision "shell",
         inline: "grep salt /etc/hosts || sudo echo \"#{MASTER_IP}\"  salt >> /etc/hosts"
+      config.vm.provision "shell",
+        inline: "grep syslog-ng /etc/hosts || sudo echo \"#{SYSLOGNG_IP}\"  salt >> /etc/hosts"
+      config.vm.provision "shell",
+        inline: "grep rsyslog /etc/hosts || sudo echo \"#{RSYSLOG_IP}\"  salt >> /etc/hosts"
       config.vm.provision :salt do |salt|
         salt.minion_config = "vagrant/config/minion"
         salt.masterless = false
