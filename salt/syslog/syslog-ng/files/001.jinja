@@ -1,6 +1,10 @@
 source s_src {
+  {% if grains.init == 'systemd' %}
+  systemd-journal(prefix(".SDATA.journald."));
+  {% else %}
   system();
   internal();
+  {% endif %}
 };
 
 destination d_local_self {
