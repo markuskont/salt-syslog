@@ -12,6 +12,9 @@ syslog.syslog-ng.rsyslog:
   {% set repo = 'xUbuntu_14.04' %}
 {% elif grains.oscodename == 'xenial' %}
   {% set repo = 'xUbuntu_16.04' %}
+{% else %}
+Fail - state does not support syslog-ng server on {{ grains.oscodename }}
+  test.fail_without_changes
 {% endif %}
 
 {% set version_split = pillar.syslog_ng.server.version.split('.') %}

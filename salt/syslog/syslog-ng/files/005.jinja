@@ -3,3 +3,7 @@
 destination d_local_unified_file {
   file("/var/log/syslog");
 };
+
+{% for name, path in pillar.syslog_ng.server.logfiles.items() %}
+destination {{ name }} { file("{{ path }}"); };
+{% endfor %}

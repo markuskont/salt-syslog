@@ -37,8 +37,8 @@ source s_remote_tcp {
 };
 
 log {
-        source(s_remote_ietf);
-        source(s_remote_tcp);
-        source(s_src);
-        destination(d_local_unified_file);
+  source(s_remote_ietf);
+  source(s_remote_tcp);
+  source(s_src);
+  destination(d_local_unified_file);
 };

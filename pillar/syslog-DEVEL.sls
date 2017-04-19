@@ -31,3 +31,13 @@ syslog_ng:
       maxconn: 250
       logfetch: 100
       logiwsize: 100
+    logfiles:
+      d_local_file: '/var/log/server/$FACILITY.$LEVEL.log'
+      d_local_debug: '/var/log/debug.log'
+      d_local_syslog_err: '/var/log/syslog_err.log'
+      d_local_daemon: '/var/log/server/$FACILITY/$PROGRAM.$LEVEL.log'
+      d_local_byhost: '/var/log/hosts/$HOST.log'
+      d_local_custom: '/var/log/custom/$PROGRAM.log'
+      d_local_ovpn: '/var/log/openvpn/$HOST-$PROGRAM.log'
+      d_local_criticality: '/var/log/criticality/$LEVEL.log'
+      d_local_mail: '/var/log/mail/$HOST.log'
