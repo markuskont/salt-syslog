@@ -7,6 +7,15 @@ syslog:
     state: Harjumaa
     location: Tallinn
     org: Cats&dogs ltd
+  params:
+    PermPeer: '*'
+  servers:
+    - server: 192.168.56.141
+      port: 6514
+      rsyslog_format: 'RSYSLOG_ForwardFormat'
+    - server: 192.168.56.142
+      port: 6514
+      rsyslog_format: 'RSYSLOG_ForwardFormat'
 
 syslog_ng:
   server:

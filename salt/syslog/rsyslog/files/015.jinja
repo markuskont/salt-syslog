@@ -1,0 +1,15 @@
+$ModLoad imtcp # TCP listener
+#
+## make gtls driver the default
+$DefaultNetstreamDriver gtls
+## Setup SSL connection.
+## CA/Cert
+$DefaultNetStreamDriverCAFile {{ cacert }}
+$DefaultNetstreamDriverCertFile {{ cert }}
+$DefaultNetstreamDriverKeyFile {{ key }}
+#
+# Connection settings.
+$InputTCPServerStreamDriverMode 1
+$InputTCPServerStreamDriverAuthMode x509/name
+$InputTCPServerStreamDriverPermittedPeer *
+$InputTCPServerRun 6514

@@ -22,6 +22,7 @@ syslog.rsyslog.install:
   pkg.latest:
     - pkgs:
       - rsyslog
+      - rsyslog-gnutls
     - refresh: True
   service.running:
     - name: rsyslog

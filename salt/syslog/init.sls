@@ -13,3 +13,13 @@ syslog.logserver.setup:
     - saltenv: {{ saltenv }}
     - require:
       - salt: syslog.ca.setup
+
+syslog.client.setup:
+  salt.state:
+    - tgt: 'G@roles:logs and G@env:{{ saltenv }}'
+    - tgt_type: compound
+    - sls: syslog.client
+    - saltenv: {{ saltenv }}
+    - require:
+      - salt: syslog.ca.setup
+      - salt: syslog.logserver.setup

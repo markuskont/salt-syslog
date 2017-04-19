@@ -1,0 +1,30 @@
+# This file is managed by Puppet, changes may be overwritten
+# An "In-Memory Queue" is created for remote logging.
+$WorkDirectory /var/spool/rsyslog    # where to place spool files
+$ActionQueueFileName queue      # unique name prefix for spool files
+$ActionQueueMaxDiskSpace 1g     # spool space limit (use as much as possible)
+$ActionQueueSaveOnShutdown on   # save messages to disk on shutdown
+$ActionQueueType LinkedList     # run asynchronously
+$ActionResumeRetryCount -1      # infinety retries if host is down
+
+# Preserve domain suffix in syslog hostname
+# PS! Does not work with rsyslog 5 (bug, not a feature)
+$PreserveFQDN on
+
+# Setup SSL connection.
+# CA/Cert
+$DefaultNetStreamDriverCAFile {{ cacert }}
+$DefaultNetstreamDriverCertFile {{ cert }}
+$DefaultNetstreamDriverKeyFile {{ key }}
+
+# Connection settings.
+$DefaultNetstreamDriver gtls
+$ActionSendStreamDriverMode 1
+$ActionSendStreamDriverAuthMode x509/name
+$ActionSendStreamDriverPermittedPeer {{ pillar.syslog.params.PermPeer }}
+
+
+# Sending all logs to following servers
+{% for params in pillar.syslog.servers %}
+*.* @@(o){{ params.server }}:{{ params.port }};{{ params.rsyslog_format }}
+{% endfor %}
