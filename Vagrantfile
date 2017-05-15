@@ -5,7 +5,6 @@ SALT = 'stable' # stable|git|daily|testing
 # version to check out if using git
 SALT_VERSION = "v2016.11.2"
 
-INFLUX_IP = '192.168.56.140'
 SYSLOGNG_IP = '192.168.56.141'
 RSYSLOG_IP = '192.168.56.142'
 
@@ -121,9 +120,9 @@ Vagrant.configure(2) do |config|
       end
       #config.vm.provision "shell", path: "./vagrant/scripts/devel_packages.sh"
       config.vm.provision "shell", path: "./vagrant/scripts/assign_roles.py"
-      #if opts[:saltmaster] == true
-      #  config.vm.provision "shell", path: "./vagrant/scripts/winrepo.sh"
-      #else
+      if opts[:saltmaster] == true
+        config.vm.provision "shell", path: "./vagrant/scripts/winrepo.sh"
+      else
       #  config.vm.provision "shell",
       #    inline: "sudo sed -i s/DEVEL/\"#{opts[:saltenv]}\"/g /etc/salt/minion && service salt-minion restart"
       #end

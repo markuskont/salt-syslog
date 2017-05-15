@@ -1,5 +1,7 @@
 file_recv: True
 file_roots:
+  base:
+    - /srv/salt
   DEVEL:
     - /srv/salt/
     - /vagrant/salt
