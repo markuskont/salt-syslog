@@ -123,9 +123,9 @@ Vagrant.configure(2) do |config|
       if opts[:saltmaster] == true
         config.vm.provision "shell", path: "./vagrant/scripts/winrepo.sh"
       else
-      #  config.vm.provision "shell",
-      #    inline: "sudo sed -i s/DEVEL/\"#{opts[:saltenv]}\"/g /etc/salt/minion && service salt-minion restart"
-      #end
+        config.vm.provision "shell",
+          inline: "sudo sed -i s/DEVEL/\"#{opts[:saltenv]}\"/g /etc/salt/minion && service salt-minion restart"
+      end
     end
   end
 end
