@@ -14,7 +14,7 @@ syslog.nxlog.install:
     - source: salt://syslog/nxlog/files/nxlog.jinja
     - template: jinja
     - default:
-      root: 'C:\\Program Files(x86)\nxlog'
+      root: 'C:\Program Files (x86)\nxlog'
       cacert: {{ map.ca_dir }}/ca.pem
       key: {{ map.conf_dir }}/key.pem
       cert: {{ map.conf_dir }}/cert.pem
