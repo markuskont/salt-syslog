@@ -72,7 +72,9 @@ include:
     - source:
       - salt://{{pillar.syslog.pki.server}}/files{{pillar.syslog.pki.dir}}/ca.crt
 
+{% if grains.kernel == Linux %}
 /usr/bin/c_rehash {{ map.ca_dir }}:
   cmd.run:
     - onchanges:
       - file: {{ map.ca_dir }}/ca.pem
+{% endif %}
