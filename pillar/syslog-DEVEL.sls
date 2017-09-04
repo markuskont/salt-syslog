@@ -19,7 +19,9 @@ syslog:
 
 syslog_ng:
   server:
-    version: '3.9.1-2'
+    version:
+      maj: 3
+      min: 11
     global:
       chain_hostnames: 'off'
       use_dns: 'no'

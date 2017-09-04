@@ -3,6 +3,7 @@
 include:
   - syslog.pki.client
   - syslog.syslog-ng.install
+  - syslog.syslog-ng.config
 
 /etc/syslog-ng/conf.d/015-logserver.conf:
   file.managed:
