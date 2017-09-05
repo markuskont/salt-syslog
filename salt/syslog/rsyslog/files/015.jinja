@@ -11,5 +11,5 @@ $DefaultNetstreamDriverKeyFile {{ key }}
 # Connection settings.
 $InputTCPServerStreamDriverMode 1
 $InputTCPServerStreamDriverAuthMode x509/name
-$InputTCPServerStreamDriverPermittedPeer *
+$InputTCPServerStreamDriverPermittedPeer {{ pillar.syslog.params.PermPeer }}
 $InputTCPServerRun 6514
