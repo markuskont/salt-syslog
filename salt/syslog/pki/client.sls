@@ -35,6 +35,7 @@ include:
     - days_remaining: 30
     - backup: True
     - public_key: {{ map.conf_dir }}/syslog.private
+    - keyUsage: "critical digitalSignature"
     #- managed_private_key:
     #  - name: {{ map.conf_dir }}/syslog.private
     #  - bits: 4096

@@ -8,7 +8,7 @@ x509_signing_policies:
     - L: {{ pillar.syslog.pki.location }}
     - O: {{ pillar.syslog.pki.org }}
     - basicConstraints: "critical CA:false"
-    - keyUsage: "critical keyEncipherment"
+    - keyUsage: "critical keyEncipherment, digitalSignature"
     - subjectKeyIdentifier: hash
     - authorityKeyIdentifier: keyid,issuer:always
     - days_valid: 365
