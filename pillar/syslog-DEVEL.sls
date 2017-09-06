@@ -64,3 +64,5 @@ rsyslog:
     PrivDropToUser: 'root'
     PrivDropToGroup: 'root'
     WorkDirectory: '/var/spool/rsyslog'
+    CreateDirs: 'on'
+    PreserverFQDN: 'on'

@@ -1,4 +1,4 @@
-# This file is managed by Puppet, changes may be overwritten
+# This file is managed by Salt, changes may be overwritten
 # An "In-Memory Queue" is created for remote logging.
 $WorkDirectory /var/spool/rsyslog    # where to place spool files
 $ActionQueueFileName queue      # unique name prefix for spool files
@@ -6,10 +6,6 @@ $ActionQueueMaxDiskSpace 1g     # spool space limit (use as much as possible)
 $ActionQueueSaveOnShutdown on   # save messages to disk on shutdown
 $ActionQueueType LinkedList     # run asynchronously
 $ActionResumeRetryCount -1      # infinety retries if host is down
-
-# Preserve domain suffix in syslog hostname
-# PS! Does not work with rsyslog 5 (bug, not a feature)
-$PreserveFQDN on
 
 # Setup SSL connection.
 # CA/Cert
