@@ -65,4 +65,4 @@ rsyslog:
     PrivDropToGroup: 'root'
     WorkDirectory: '/var/spool/rsyslog'
     CreateDirs: 'on'
-    PreserverFQDN: 'on'
+    PreserveFQDN: 'on'
