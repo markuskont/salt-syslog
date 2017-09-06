@@ -10,7 +10,7 @@ source s_src {
 };
 
 destination d_local_self {
-  file("/var/log/{{ grains.fqdn }}.log");
+  file("/var/log/{{ grains.fqdn }}/$YEAR.$MONTH.$DAY");
 };
 
 log {

@@ -21,7 +21,7 @@ source s_remote_ietf {
 source s_remote_tcp {
   tcp(
     ip(0.0.0.0)
-    port(514)
+    port(10514)
     keep_hostname(yes)
     max-connections({{ pillar.syslog_ng.server.src.maxconn }})
     log_fetch_limit({{ pillar.syslog_ng.server.src.logfetch }})
